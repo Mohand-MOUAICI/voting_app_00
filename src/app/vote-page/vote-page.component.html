@@ -1,0 +1,12 @@
+<div class="vote-container">
+    <h1 class="page-title">Votez pour votre Joueur Favori</h1>
+    <div class="players-container">
+      <div class="player-card" *ngFor="let player of players">
+        <img [src]="player.image" alt="{{ player.name }}">
+        <h3>{{ player.name }}</h3>
+        <button class="vote-button" (click)="vote(player)">Vote</button>
+        <p>Votes: {{ player.votes }}</p>
+      </div>
+    </div>
+  </div>
+  

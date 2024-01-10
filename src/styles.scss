@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    background-image: url('./assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; // l'image de fond ne bouge pas lors du défilement
+  }
+  .player-card {
+    // ... autres styles
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transform: translateY(-5px);
+    }
+  }
+  
