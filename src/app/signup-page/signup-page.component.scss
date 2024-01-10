@@ -1,8 +1,12 @@
-.login-container {
-    max-width: 300px;
+.signup-container {
+    max-width: 400px;
     margin: auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      text-align: center;
+    }
   
     .form-group {
       margin-bottom: 15px;
@@ -33,23 +37,6 @@
       &:hover {
         background-color: #004494;
       }
-  
-      &:disabled {
-        background-color: #cccccc;
-        cursor: default;
-      }
     }
   }
-.signup-prompt {
- margin-top: 20px;
-  
- a {
-  color: #007bff; // Couleur du lien
-  text-decoration: none; // Optionnel, pour enlever le soulignement
-  
-  &:hover {
-       text-decoration: underline; // Optionnel, souligner au survol
-     }
- }
- }
   

@@ -4,18 +4,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VotePageComponent } from './vote-page/vote-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { ReactiveFormsModule } from '@angular/forms';  // Import de ReactiveFormsModule
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignupPageComponent } from './signup-page/signup-page.component';  // Import de ReactiveFormsModule
+import { FormsModule } from '@angular/forms'; // Importer FormsModule
 @NgModule({
   declarations: [
     AppComponent,
     VotePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule  // Ajout de ReactiveFormsModule ici
+    ReactiveFormsModule,  // Ajout de ReactiveFormsModule ici
+    FormsModule, // Ajouter FormsModule ici
   ],
   providers: [],
   bootstrap: [AppComponent]
