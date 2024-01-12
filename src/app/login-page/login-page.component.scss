@@ -1,17 +1,49 @@
 .login-container {
+  max-width: 300px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white; // Fond blanc pour le formulaire
+  border-radius: 20px;
+  text-align: center; // Centrer les éléments à l'intérieur
+
+  .embedded-image {
+    max-width: 100%; // S'assurer que l'image ne dépasse pas le formulaire
+    height: auto;
+    border-radius: 10px; // Arrondir les coins de l'image si nécessaire
+    margin-bottom: 20px; // Espace entre l'image et le formulaire
+  }
+  }
+  .green-background-container {
+    flex: 0.6;
+    background-color: rgba(0, 128, 0, 0.116); // Fond vert pour cette partie
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .login-container {
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.116);
+    padding: 20px;
+    border-radius: 20px;
+    flex: 0,4;
     max-width: 300px;
     margin: auto;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+
+    
     .form-group {
       margin-bottom: 15px;
-  
+
       label {
         display: block;
         margin-bottom: 5px;
       }
-  
+
       input {
         width: 100%;
         padding: 10px;
@@ -19,7 +51,7 @@
         border-radius: 4px;
       }
     }
-  
+
     button {
       width: 100%;
       padding: 10px;
@@ -29,27 +61,26 @@
       color: white;
       font-size: 16px;
       cursor: pointer;
-  
+
       &:hover {
         background-color: #004494;
       }
-  
+
       &:disabled {
         background-color: #cccccc;
         cursor: default;
       }
     }
+
+    .signup-prompt {
+      margin-top: 20px;
+      a {
+        color: #007bff;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
-.signup-prompt {
- margin-top: 20px;
-  
- a {
-  color: #007bff; // Couleur du lien
-  text-decoration: none; // Optionnel, pour enlever le soulignement
-  
-  &:hover {
-       text-decoration: underline; // Optionnel, souligner au survol
-     }
- }
- }
-  

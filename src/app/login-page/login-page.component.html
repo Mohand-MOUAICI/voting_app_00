@@ -1,4 +1,8 @@
-<div class="login-container">
+<div class="main-container">
+  <div class="login-container">
+    <img src="./assets/KeepieUppie.gif" alt="Image intégrée" class="embedded-image">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="login-container">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-group">
         <label for="username">Username</label>
@@ -11,7 +15,6 @@
       <button type="submit" [disabled]="!loginForm.valid">Login</button>
     </form>
     <p class="signup-prompt">
-        Pas encore de compte ? <a routerLink="/signup">Inscrivez-vous</a>
-      </p>
+      Pas encore de compte ? <a routerLink="/signup">Inscrivez-vous</a>
+    </p>
   </div>
-  
