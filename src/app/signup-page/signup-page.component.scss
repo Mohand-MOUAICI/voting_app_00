@@ -2,8 +2,13 @@
     max-width: 400px;
     margin: auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.116);
+    text-align: center; // Pour centrer l'image et les éléments du formulaire
+    .signup-image {
+      max-width: 40%; // Pour s'assurer que l'image ne dépasse pas le conteneur
+      height: auto; // Pour maintenir le ratio de l'image
+      margin-bottom: 0px; // Espace entre l'image et le titre
+  }
     h2 {
       text-align: center;
     }
@@ -19,7 +24,7 @@
       input {
         width: 100%;
         padding: 10px;
-        border: 1px solid #ddd;
+        border: 1px solid #dddddd;
         border-radius: 4px;
       }
     }
@@ -30,7 +35,7 @@
       border: none;
       border-radius: 4px;
       background-color: #0056b3;
-      color: white;
+      color: rgb(255, 255, 255);
       font-size: 16px;
       cursor: pointer;
   
