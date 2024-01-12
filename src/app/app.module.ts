@@ -6,13 +6,15 @@ import { VotePageComponent } from './vote-page/vote-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './signup-page/signup-page.component';  // Import de ReactiveFormsModule
-import { FormsModule } from '@angular/forms'; // Importer FormsModule
+import { FormsModule } from '@angular/forms';
+import { HomePageComponent } from './home-page/home-page.component'; // Importer FormsModule
 @NgModule({
   declarations: [
     AppComponent,
     VotePageComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
