@@ -1,88 +1,87 @@
 .vote-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .page-title {
-    font-size: 4rem; 
-    color: #0e553d;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative; // Position relative pour la pseudo-élément
-  
-    &:after { // Pseudo-élément pour la ligne sous le titre
+  text-align: center;
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 4rem; 
+  color: #0e553d;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  &:after {
       content: '';
-      position: absolute; // Positionnement absolu par rapport au titre
-      left: 50%; // Centrer la ligne horizontalement
-      transform: translateX(-50%); // Ajustement pour centrer parfaitement
-      bottom: -10px; // Positionnement sous le titre
-      width: 50%; // Largeur de la ligne
-      height: 2px; // Épaisseur de la ligne
-      background-color: #0e553d; // Couleur de la ligne
-    }
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      width: 50%;
+      height: 2px;
+      background-color: #0e553d;
   }
-  
-  .players-container {
-    display: flex; // Utilisation de Flexbox
-    flex-direction: row; // Alignement horizontal
-    justify-content: center; // Centrage des cartes
-    align-items: flex-start; // Alignement des cartes en haut
-    gap: 20px; // Espacement entre les cartes
-  }
-  
-  .player-card {
-    background-color: rgba(18, 32, 226, 0.062);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    width: auto; // Largeur automatique pour s'adapter au contenu
-    flex: 0 0 auto; // Ne pas grandir, ne pas rétrécir, mais permettre le réglage de la base
-  
-    &:hover {
+}
+
+.players-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Crée 5 colonnes */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.player-card {
+  background-color: rgba(18, 226, 139, 0.436);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  width: auto;
+  flex: 0 0 auto;
+
+  &:hover {
       transform: translateY(-5px);
-    }
-  
-    img {
+  }
+
+  img {
       width: 250px;
       height: auto;
       border-radius: 10px;
       transition: transform 0.3s ease;
       margin-bottom: 15px;
-  
+
       &:hover {
-        transform: scale(1.1);
+          transform: scale(1.1);
       }
-    }
-  
-    h3 {
+  }
+
+  h3 {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
-    }
-  
-    p {
+  }
+
+  p {
       font-size: 1rem;
       color: #333;
-    }
   }
-  
-  .vote-button {
-    background: url('/assets/football-icon.png') no-repeat center center;
-    background-size: contain;
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  
-    &:hover {
+}
+
+.vote-button {
+  background: url('/assets/football-icon.png') no-repeat center center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
       transform: scale(1.2);
-    }
-  
-    &:focus {
-      outline: none;
-    }
   }
-  
+
+  &:focus {
+      outline: none;
+  }
+}

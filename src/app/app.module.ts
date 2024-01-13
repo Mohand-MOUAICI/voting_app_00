@@ -14,7 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component'; // Importer
     VotePageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

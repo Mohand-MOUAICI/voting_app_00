@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+StatsPageComponent() {
+throw new Error('Method not implemented.');
+}
 
   constructor(private router: Router) {}
 

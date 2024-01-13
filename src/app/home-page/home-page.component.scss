@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #4caf4f3a;
+    background-color: #4caf4f00;
     color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -15,7 +15,7 @@
   
   .right-content {
     flex: 1;
-    transform: perspective(2000px) rotateY(-20deg); /* Incliner l'image en 3D avec une perspective plus intense */
+    transform: perspective(20000px) rotateY(-20deg); /* Incliner l'image en 3D avec une perspective plus intense */
   }
   
   .app-title {
@@ -30,7 +30,7 @@
   }
   
   .log-button {
-    background-color: #007bff;
+    background-color: #0db33f;
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -46,7 +46,7 @@
   .right-content img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: rotateY(20deg); /* Incliner l'image dans l'autre direction avec une perspective plus intense */
     transition: transform 0.3s ease;
