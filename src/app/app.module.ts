@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupPageComponent } from './signup-page/signup-page.component';  // Import de ReactiveFormsModule
 import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component'; // Importer FormsModule
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component'; // Importer
     AppRoutingModule,
     ReactiveFormsModule,  // Ajout de ReactiveFormsModule ici
     FormsModule, // Ajouter FormsModule ici
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

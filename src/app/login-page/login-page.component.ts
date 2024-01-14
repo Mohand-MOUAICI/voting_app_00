@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,17 +11,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPageComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private authService:AuthService,
+    private router:Router) {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['bassirou.diallo@gmail.com', Validators.required],
+      password: ['toor98', Validators.required]
     });
   }
 
   onLogin() {
-    if (this.loginForm.valid) {
-      console.log('Login Successful', this.loginForm.value);
-      // Ici, intégrez la logique pour le traitement de la connexion
-    }
+    this.authService.login(this.loginForm.value).subscribe({
+      next: result => {
+        console.log(result)
+        // @ts-ignore
+        localStorage.setItem('email', result['email'])
+        // @ts-ignore
+        localStorage.setItem('token', result['idToken'])
+        this.router.navigateByUrl('/vote');
+      }, error: err => {
+        console.log(err)
+      }
+    })
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Candidat } from '../models/candidat.model';
 
 @Component({
   selector: 'app-vote-page',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./vote-page.component.scss']
 })
 export class VotePageComponent {
+  candidats: Candidat[] = [];
+  alreadyDone: boolean = false;
+
   players = [
     { name: 'Mohamed Salah (Liverpool)', votes: 0, image: '/assets/Mohamed Salah (Liverpool).jpg' },
     { name: 'Alejandro Grimaldo (Bayer Leverkusen)', votes: 0, image: 'assets/Alejandro Grimaldo (Bayer Leverkusen).jpg' },
