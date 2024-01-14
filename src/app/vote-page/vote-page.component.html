@@ -1,4 +1,4 @@
-<div class="vote-container">
+<div *ngIf="!is_result" class="vote-container">
     <h1 class="page-title">Votez pour votre Joueur Favori</h1>
     <div class="players-container">
       <div class="player-card" *ngFor="let player of candidats">
@@ -8,5 +8,14 @@
         <!--<p>Votes: {{ player.votes }}</p>-->
       </div>
     </div>
+</div>
+<div *ngIf="is_result" class="vote-container">
+  <h1 class="page-title">Résultat des votes</h1>
+  <div class="players-container">
+    <div class="player-card" *ngFor="let player of results_vote">
+      <!--<img [src]="player.image" alt="{{ player.name }}">-->
+      <h3>{{ player.nameCandidat }}</h3>
+      <p>Votes: {{ player.nbrVote }}</p>
+    </div>
   </div>
-  
+</div>

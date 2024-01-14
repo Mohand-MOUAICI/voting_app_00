@@ -11,7 +11,6 @@ import { HomePageComponent } from './home-page/home-page.component'; // Importer
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ResultatPageComponent } from './resultat-page/resultat-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { ResultatPageComponent } from './resultat-page/resultat-page.component';
     LoginPageComponent,
     SignupPageComponent,
     HomePageComponent,
-    ResultatPageComponent,
   ],
   imports: [
     BrowserModule,
