@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Candidat } from '../models/candidat.model';
+import { ManageService } from '../services/manage.service';
 
 @Component({
   selector: 'app-vote-page',
@@ -10,6 +11,51 @@ export class VotePageComponent {
   candidats: Candidat[] = [];
   alreadyDone: boolean = false;
 
+  constructor(private managerSrv: ManageService,
+) {
+this.handleGetAllCandidat();
+}
+async handleGetAllCandidat() {
+
+  this.managerSrv.onGetAllCandidat().subscribe({
+    next: (candidats: Candidat[]) => {
+      this.candidats = candidats;
+    }, error: err => {
+      console.log(err)
+    }
+  })
+
+}
+  async handlerVoter(candidateId: String) {
+    let userEmail = localStorage.getItem('email')
+    // @ts-ignore
+    let check = JSON.parse(localStorage.getItem('user'))
+    console.log(check)
+    if (check) {
+      let vote = check['vote']
+      let email = check['email']
+      console.log(vote, '---', email)
+      if (vote == 'true' && email == userEmail)
+        console.log('Vous avez déja voté')
+        //this.presentToast('Vous avez déja voté', 'warning')
+    
+    } else {
+      // @ts-ignore
+      const vote: Vote = {'userEmail': userEmail, 'candidateId': candidateId}
+      this.managerSrv.onGetVoter(vote).subscribe({
+        next: vote => {
+ 
+          const alreadyDone = {'email': userEmail, vote: 'true'}
+
+          localStorage.setItem('user', JSON.stringify(alreadyDone))
+          //this.presentToast('Vous avez voté avec success', 'success')
+        }, error: err => {
+
+          //this.presentToast('Une erreur est survenue', 'danger')
+        }
+      })
+    }
+  }
   players = [
     { name: 'Mohamed Salah (Liverpool)', votes: 0, image: '/assets/Mohamed Salah (Liverpool).jpg' },
     { name: 'Alejandro Grimaldo (Bayer Leverkusen)', votes: 0, image: 'assets/Alejandro Grimaldo (Bayer Leverkusen).jpg' },
