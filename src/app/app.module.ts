@@ -9,6 +9,9 @@ import { SignupPageComponent } from './signup-page/signup-page.component';  // I
 import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component'; // Importer FormsModule
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,  // Ajoutez ceci
+    ToastrModule.forRoot(),  // Ajoutez ToastrModule
     AppRoutingModule,
     ReactiveFormsModule,  // Ajout de ReactiveFormsModule ici
     FormsModule, // Ajouter FormsModule ici

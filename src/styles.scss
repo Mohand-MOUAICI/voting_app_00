@@ -15,4 +15,81 @@
       transform: translateY(-5px);
     }
   }
+
+  .toast-container {
+    .toast {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      color: white;
+      font-size: 16px;
   
+      // Pour l'icône
+      .icon {
+        font-size: 30px;
+        margin-right: 15px;
+      }
+  
+      // Pour le contenu textuel
+      .content {
+        flex-grow: 1;
+  
+        .toast-title {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+  
+        .toast-message {
+          font-size: 14px;
+        }
+      }
+  
+      // Pour les boutons ou actions
+      .actions {
+        margin-left: 15px;
+  
+        button {
+          border: none;
+          background: none;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  
+    // Styles spécifiques pour succès et échec
+    .toast::before {
+      display: inline-block;
+      width: 24px; // ajustez cette valeur pour contrôler la taille de l'icône
+      height: 24px; // assurez-vous que cette valeur est égale à width pour garder l'icône carrée
+      content: ''; // réinitialisez le contenu
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle; // alignement vertical avec le texte
+    }
+    
+    .toast-success::before {
+      background-image: url('./assets/success-icon-23187.png');
+    }
+    
+    .toast-error::before {
+      background-image: url('./assets/error-icon-25243.png'); // Vérifiez ce chemin
+      // Assurez-vous que les autres propriétés CSS sont les mêmes que pour .toast-success::before
+      display: inline-block;
+      width: 100px; // ajustez si nécessaire
+      height: 100px;
+      content: '';
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      margin-right: 10px; // Ajustez cette valeur pour obtenir l'espacement souhaité
+    }
+    
+    }
+    .toast {
+      padding: 150px; // Ajustez selon vos besoins
+      display: flex;
+      align-items: center;
+    }
