@@ -85,3 +85,21 @@
       outline: none;
   }
 }
+/* Style pour les alertes futuristes */
+.custom-futuristic-alert {
+  background-color: #0077FF; /* Couleur de fond bleue */
+  color: #FFFFFF; /* Couleur du texte blanc */
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 119, 255, 0.5); /* Ombre légère */
+  font-family: 'Roboto', sans-serif; /* Police de caractères moderne */
+  font-size: 16px; /* Taille de la police */
+  padding: 10px 20px; /* Espacement intérieur */
+  margin-bottom: 10px; /* Marge inférieure pour les alertes empilées */
+  transition: transform 0.3s ease-in-out; /* Animation de transformation */
+
+  /* Effet de survol */
+  &:hover {
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+    box-shadow: 0 0 20px rgba(0, 119, 255, 0.7); /* Ombre plus prononcée */
+  }
+}

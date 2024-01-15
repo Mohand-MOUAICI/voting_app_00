@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Candidat } from '../models/candidat.model';
 import { ManageService } from '../services/manage.service';
 import { Resultvote } from '../models/resultvote.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-vote-page',
@@ -9,12 +11,18 @@ import { Resultvote } from '../models/resultvote.model';
   styleUrls: ['./vote-page.component.scss']
 })
 export class VotePageComponent {
+showSuccessAlert: any;
+showErrorAlert: any;
+closeAlert(_t26: any) {
+throw new Error('Method not implemented.');
+}
   candidats: Candidat[] = [];
   alreadyDone: boolean = false;
   results_vote: Resultvote[] = [];
   is_result: boolean = false;
-  constructor(private managerSrv: ManageService,
-) {
+alerts: any;
+  constructor(private managerSrv: ManageService, private toastr: ToastrService)
+   {
 this.handleGetAllCandidat();
 }
 async handleGetAllCandidat() {
@@ -53,7 +61,8 @@ async handlerGetResultVte() {
       let email = check['email']
       console.log(vote, '---', email)
       if (vote == 'true' && email == userEmail)
-        console.log('Vous avez déja voté')
+      this.toastr.warning('Vous avez déjà voté', 'Alerte');
+      return; // Arrêtez ici pour éviter de continuer avec le vote
         //this.presentToast('Vous avez déja voté', 'warning')
     
     } else {
@@ -66,9 +75,13 @@ async handlerGetResultVte() {
 
           localStorage.setItem('user', JSON.stringify(alreadyDone))
           //this.presentToast('Vous avez voté avec success', 'success')
+          this.toastr.success('Opération réussie !', 'Succès');
+
         }, error: err => {
 
           //this.presentToast('Une erreur est survenue', 'danger')
+          this.toastr.error('Une erreur est survenue', 'Erreur');
+
         }
       })
     }
