@@ -1,0 +1,20 @@
+/* Style des boutons */
+.result-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .result-button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Ajoutez un espace entre les boutons */
+  }
+  
+  .result-button:last-child {
+    margin-right: 0; /* Pas de marge à droite pour le dernier bouton */
+  }
+  

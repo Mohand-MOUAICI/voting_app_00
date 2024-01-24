@@ -4,27 +4,27 @@
 }
 
 .page-title {
-  font-size: 4rem; 
+  font-size: 4rem;
   color: #0e553d;
   margin-bottom: 1rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
+}
 
-  &:after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;
-      width: 50%;
-      height: 2px;
-      background-color: #0e553d;
-  }
+.page-title:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 50%;
+  height: 2px;
+  background-color: #0e553d;
 }
 
 .players-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Crée 5 colonnes */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
@@ -38,34 +38,32 @@
   margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  width: auto;
-  flex: 0 0 auto;
+}
 
-  &:hover {
-      transform: translateY(-5px);
-  }
+.player-card:hover {
+  transform: translateY(-5px);
+}
 
-  img {
-      width: 250px;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-      margin-bottom: 15px;
+.player-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
 
-      &:hover {
-          transform: scale(1.1);
-      }
-  }
+.player-card img:hover {
+  transform: scale(1.1);
+}
 
-  h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-  }
+.player-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
 
-  p {
-      font-size: 1rem;
-      color: #333;
-  }
+.player-card p {
+  font-size: 1rem;
+  color: #333;
 }
 
 .vote-button {
@@ -76,30 +74,84 @@
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease;
-
-  &:hover {
-      transform: scale(1.2);
-  }
-
-  &:focus {
-      outline: none;
-  }
 }
-/* Style pour les alertes futuristes */
-.custom-futuristic-alert {
-  background-color: #0077FF; /* Couleur de fond bleue */
-  color: #FFFFFF; /* Couleur du texte blanc */
-  border-radius: 5px; /* Coins arrondis */
-  box-shadow: 0 0 10px rgba(0, 119, 255, 0.5); /* Ombre légère */
-  font-family: 'Roboto', sans-serif; /* Police de caractères moderne */
-  font-size: 16px; /* Taille de la police */
-  padding: 10px 20px; /* Espacement intérieur */
-  margin-bottom: 10px; /* Marge inférieure pour les alertes empilées */
-  transition: transform 0.3s ease-in-out; /* Animation de transformation */
 
-  /* Effet de survol */
-  &:hover {
-    transform: scale(1.05); /* Légère augmentation de la taille au survol */
-    box-shadow: 0 0 20px rgba(0, 119, 255, 0.7); /* Ombre plus prononcée */
-  }
+.vote-button:hover, .vote-button:focus {
+  transform: scale(1.2);
+  outline: none; /* Better focus style if needed */
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.logout-button, .results-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button {
+  background-color: red;
+  color: white;
+}
+
+.results-button {
+  background-color: blue;
+  color: white;
+}
+.back-button {
+  padding: 10px 20px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; // Ajouter un espace entre les boutons
+}
+
+
+.custom-alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }

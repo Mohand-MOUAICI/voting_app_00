@@ -1,0 +1,22 @@
+
+<!-- result-page.component.html -->
+<div *ngIf="results; else loading">
+
+<div class="result-buttons">
+    <button class="result-button" (click)="goBackToVote()">Revenir à la page de vote</button>
+    <button class="result-button" (click)="logout()">Déconnexion</button>
+  </div>
+  
+    <h2>Résultats des Votes</h2>
+    <ul>
+      <li *ngFor="let result of results">
+        {{ result.candidateName }}: {{ result.votes }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #loading>
+    <p>Chargement des résultats...</p>
+  </ng-template>
+
+  

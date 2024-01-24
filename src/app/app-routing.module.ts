@@ -4,6 +4,7 @@ import { VotePageComponent } from './vote-page/vote-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   //{ path: '', redirectTo: '/vote', pathMatch: 'full' },
   { path: 'signup', component: SignupPageComponent },
   { path: 'home', component: HomePageComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'results', component: ResultPageComponent },
 ];
 
 @NgModule({

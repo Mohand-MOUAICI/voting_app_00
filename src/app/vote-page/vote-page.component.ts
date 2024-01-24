@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Candidat } from '../models/candidat.model';
-import { ManageService } from '../services/manage.service';
-import { Resultvote } from '../models/resultvote.model';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router'; // Importer Router
 import { ToastrService } from 'ngx-toastr';
-
+import { Candidat } from '../models/candidat.model';
+import { Resultvote } from '../models/resultvote.model';
+import { ManageService } from '../services/manage.service';
+import { NotificationModalComponent } from '../notification-modal/notification-modal.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vote-page',
@@ -11,83 +13,94 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./vote-page.component.scss']
 })
 export class VotePageComponent {
-showSuccessAlert: any;
-showErrorAlert: any;
-closeAlert(_t26: any) {
-throw new Error('Method not implemented.');
-}
+  location: any;
+  showResults() {
+    this.router.navigate(['/results']);
+  }
+  votingMethod(votingMethod: any) {
+    throw new Error('Method not implemented.');
+  }
+  @ViewChild(NotificationModalComponent) private notificationModal!: NotificationModalComponent;
+
   candidats: Candidat[] = [];
-  alreadyDone: boolean = false;
   results_vote: Resultvote[] = [];
   is_result: boolean = false;
-alerts: any;
-  constructor(private managerSrv: ManageService, private toastr: ToastrService)
-   {
-this.handleGetAllCandidat();
-}
-async handleGetAllCandidat() {
+  showSuccessAlert: any;
+  showErrorAlert: any;
 
-  this.managerSrv.onGetAllCandidat().subscribe({
-    next: (candidats: Candidat[]) => {
-      this.candidats = candidats;
-    }, error: err => {
-      console.log(err)
-    }
-  })
+  constructor(
+    private router: Router, // Injecter le service Router
+    private managerSrv: ManageService, 
+    private toastr: ToastrService,
 
-}
-async handlerGetResultVte() {
-  this.managerSrv.onGetResultVote().subscribe({
-    next: (result: Resultvote[]) => {
-      result.forEach(item => {
-        item.pourcentage = +item.pourcentage.toFixed(2)
-      })
-      this.results_vote = result;
-    }, error: err => {
-      console.log(err)
-
-    }
-  })
-}
-  async handlerVoter(candidateId: String) {
-    let userEmail = localStorage.getItem('email')
-    this.is_result = true
-    this.handlerGetResultVte()
-    // @ts-ignore
-    let check = JSON.parse(localStorage.getItem('user'))
-    console.log(check)
-    if (check) {
-      let vote = check['vote']
-      let email = check['email']
-      console.log(vote, '---', email)
-      if (vote == 'true' && email == userEmail)
-      this.toastr.warning('Vous avez déjà voté', 'Alerte');
-      return; // Arrêtez ici pour éviter de continuer avec le vote
-        //this.presentToast('Vous avez déja voté', 'warning')
-    
-    } else {
-      // @ts-ignore
-      const vote: Vote = {'userEmail': userEmail, 'candidateId': candidateId}
-      this.managerSrv.onGetVoter(vote).subscribe({
-        next: vote => {
- 
-          const alreadyDone = {'email': userEmail, vote: 'true'}
-
-          localStorage.setItem('user', JSON.stringify(alreadyDone))
-          //this.presentToast('Vous avez voté avec success', 'success')
-          this.toastr.success('Opération réussie !', 'Succès');
-
-        }, error: err => {
-
-          //this.presentToast('Une erreur est survenue', 'danger')
-          this.toastr.error('Une erreur est survenue', 'Erreur');
-
-        }
-      })
-    }
+  ) {
+    this.handleGetAllCandidat();
   }
-  vote(player: any) {
-    player.votes++;
-    // Implémentez ici la logique pour traiter le vote
+
+  private handleGetAllCandidat() {
+    this.managerSrv.onGetAllCandidat().subscribe({
+      next: (candidats: Candidat[]) => {
+        this.candidats = candidats;
+      },
+      error: (err) => {
+        this.showError(err.message);
+      }
+    });
+  }
+
+  handlerVoter(candidateId: string) {
+    const userVote = this.getUserVote();
+    if (userVote && userVote.vote === 'true' && userVote.email === this.getUserEmail()) {
+      this.toastr.warning('Vous avez déjà voté', 'Alerte');
+      return;
+    }
+
+    const vote = { userEmail: this.getUserEmail(), candidateId: candidateId };
+    this.managerSrv.onGetVoter(vote).subscribe({
+      next: () => {
+        this.setUserVote();
+        this.showSuccess('Opération réussie!');
+      },
+      error: (err) => {
+        this.showError(err.message);
+      }
+    });
+  }
+
+  private getUserVote() {
+    return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  private getUserEmail(): string {
+    return localStorage.getItem('email') || '';
+  }
+
+  private setUserVote() {
+    const alreadyDone = { email: this.getUserEmail(), vote: 'true' };
+    localStorage.setItem('user', JSON.stringify(alreadyDone));
+  }
+
+  private showError(message: string) {
+    this.showNotification(`Erreur: ${message}`);
+  }
+
+  private showSuccess(message: string) {
+    this.showNotification(`Succès: ${message}`);
+  }
+
+  showNotification(message: string): void {
+    this.notificationModal.open(message);
+  }
+
+  closeNotification(): void {
+    this.notificationModal.close();
+  }
+
+  handleLogout() {
+    // Ajouter ici la logique de déconnexion si nécessaire
+    this.router.navigate(['/home']); // Rediriger vers la page d'accueil
+  }
+  goBack() {
+    window.history.back();
   }
 }

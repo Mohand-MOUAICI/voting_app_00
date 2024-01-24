@@ -1,33 +1,41 @@
-<div *ngIf="!is_result" class="vote-container">
-    <h1 class="page-title">Votez pour votre Joueur Favori</h1>
-    <div class="players-container">
-      <div class="player-card" *ngFor="let player of candidats">
-        <!--<img [src]="player.image" alt="{{ player.name }}">-->
-        <h3>{{ player.name }}</h3>
-        <button class="vote-button" (click)="handlerVoter(player.candidateId)">Vote</button>
-        <!--<p>Votes: {{ player.votes }}</p>-->
-      </div>
-    </div>
-</div>
-<div *ngIf="is_result" class="vote-container">
-  <h1 class="page-title">Résultat des votes</h1>
-  <div class="players-container">
-    <div class="player-card" *ngFor="let player of results_vote">
-      <!--<img [src]="player.image" alt="{{ player.name }}">-->
-      <h3>{{ player.nameCandidat }}</h3>
-      <p>Votes: {{ player.nbrVote }}</p>
-    </div>
-  </div>
+<!-- Ajout du bouton de déconnexion dans le haut de la page -->
+<div class="buttons-container">
+  <button class="logout-button" (click)="handleLogout()">Déconnexion</button>
+  <button class="results-button" (click)="showResults()">Voir Résultats</button>
+  <button class="back-button" (click)="goBack()">Revenir en Arrière</button>
 </div>
 <div class="alerts">
-  <div class="alert custom-futuristic-alert" *ngIf="showSuccessAlert">
+  <div class="alert custom-alert alert-success" *ngIf="showSuccessAlert" role="alert">
     Opération réussie !
   </div>
-
-  <div class="alert custom-futuristic-alert" *ngIf="showErrorAlert">
+  <div class="alert custom-alert alert-error" *ngIf="showErrorAlert" role="alert">
     Une erreur est survenue.
   </div>
 </div>
+<app-notification-modal></app-notification-modal> <!-- Notification modal component inserted -->
+<ng-container *ngIf="!is_result; else resultsBlock">
+  <div class="vote-container">
+    <h1 class="page-title">Votez pour votre Joueur Favori</h1>
+    <div class="players-container">
+      <div class="player-card" *ngFor="let player of candidats">
+        <!-- Image and other player details would go here -->
+        <h3>{{ player.name }}</h3>
+        <button class="vote-button" (click)="handlerVoter(player.candidateId)">Vote</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
 
-
+<ng-template #resultsBlock>
+  <div class="vote-container">
+    <h1 class="page-title">Résultat des votes</h1>
+    <div class="players-container">
+      <div class="player-card" *ngFor="let player of results_vote">
+        <!-- Image and other player details would go here -->
+        <h3>{{ player.nameCandidat }}</h3>
+        <p>Votes: {{ player.nbrVote | number }}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
 

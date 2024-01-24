@@ -31,4 +31,7 @@ export class SignupPageComponent {
       }
     })
   }
+  goBack() {
+    window.history.back();
+  }
 }
